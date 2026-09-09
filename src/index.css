@@ -1,0 +1,433 @@
+@import "tailwindcss";
+
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Dynamic Weather Backgrounds ===== */
+.weather-bg {
+  transition: background 1.5s ease-in-out;
+}
+
+.bg-sunny {
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ef4444 100%);
+}
+
+.bg-cloudy {
+  background: linear-gradient(135deg, #475569 0%, #64748b 50%, #94a3b8 100%);
+}
+
+.bg-rainy {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #1e40af 100%);
+}
+
+.bg-snowy {
+  background: linear-gradient(135deg, #cbd5e1 0%, #e2e8f0 50%, #f1f5f9 100%);
+}
+
+.bg-thunderstorm {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+.bg-misty {
+  background: linear-gradient(135deg, #94a3b8 0%, #cbd5e1 50%, #e2e8f0 100%);
+}
+
+.bg-night {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e293b 100%);
+}
+
+.bg-default {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+}
+
+/* ===== Rain Animation ===== */
+.effects-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.raindrop {
+  position: absolute;
+  top: -10%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
+  border-radius: 0 0 2px 2px;
+  animation: rain-fall linear infinite;
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+/* ===== Snow Animation ===== */
+.snowflake {
+  position: absolute;
+  top: -5%;
+  background: white;
+  border-radius: 50%;
+  animation: snow-fall linear infinite;
+  filter: blur(0.5px);
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translateY(-5vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(50vh) translateX(30px) rotate(180deg);
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(105vh) translateX(-20px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ===== Lightning Flash ===== */
+.lightning-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: white;
+  animation: lightning-flash 6s infinite;
+}
+
+@keyframes lightning-flash {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  3% {
+    opacity: 0.15;
+  }
+
+  5% {
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.1;
+  }
+
+  10% {
+    opacity: 0;
+  }
+}
+
+/* ===== Sun Pulse Glow ===== */
+.sun-glow {
+  animation: sun-pulse 3s ease-in-out infinite;
+}
+
+@keyframes sun-pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.sun-dot {
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.9));
+}
+
+/* ===== Card Entrance ===== */
+.card-enter {
+  animation: card-slide-up 0.5s ease-out both;
+  opacity: 0;
+}
+
+@keyframes card-slide-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Stagger delays for children */
+.stagger>*:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+.stagger>*:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.stagger>*:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.stagger>*:nth-child(4) {
+  animation-delay: 0.16s;
+}
+
+.stagger>*:nth-child(5) {
+  animation-delay: 0.20s;
+}
+
+.stagger>*:nth-child(6) {
+  animation-delay: 0.24s;
+}
+
+.stagger>*:nth-child(7) {
+  animation-delay: 0.28s;
+}
+
+.stagger>*:nth-child(8) {
+  animation-delay: 0.32s;
+}
+
+/* ===== Glow Card ===== */
+.glow-card {
+  transition: all 0.3s ease;
+}
+
+.glow-card:hover {
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.12),
+    0 0 30px rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* ===== Section Fade-in ===== */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-enter {
+  animation: sectionExpand 0.5s ease-out forwards;
+}
+
+@keyframes sectionExpand {
+  from {
+    opacity: 0;
+    transform: scaleY(0.97);
+    transform-origin: top;
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+/* ===== Forecast Scrollbar ===== */
+.forecast-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.forecast-scroll::-webkit-scrollbar {
+  height: 5px;
+}
+
+.forecast-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.forecast-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+}
+
+/* ===== AQI Gradient Bar ===== */
+.aqi-bar-bg {
+  background: linear-gradient(to right,
+      #22c55e 0%,
+      #eab308 25%,
+      #f97316 50%,
+      #ef4444 75%,
+      #7c3aed 100%);
+}
+
+/* ===== Toggle Slider ===== */
+.toggle-slider {
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ===== Chip ===== */
+.chip {
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.chip:active {
+  transform: scale(0.95);
+}
+
+/* ===== Map Container ===== */
+.map-container iframe {
+  border-radius: 12px;
+}
+
+/* ===== Empty-state icon float ===== */
+.float-icon {
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ===== Pulse ring (geolocation loading) ===== */
+.pulse-ring {
+  animation: pulseRing 1.5s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+
+  100% {
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
+}
+
+/* ===== Temperature Number Transition ===== */
+.temp-value {
+  transition: all 0.4s ease;
+}
+
+/* ===== Mobile Responsive Enhancements ===== */
+
+/* Safe area insets for notched phones (iPhone X+) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .min-h-screen {
+    padding-bottom: env(safe-area-inset-bottom) !important;
+  }
+}
+
+/* Smooth scrolling on mobile */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Reduce particle count visibility on small screens for perf */
+@media (max-width: 640px) {
+  .raindrop:nth-child(n+30) {
+    display: none;
+  }
+
+  .snowflake:nth-child(n+20) {
+    display: none;
+  }
+
+  /* Disable hover glow effects on touch (no real hover) */
+  .glow-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .glow-card:active {
+    transform: scale(0.98);
+    transition: transform 0.15s ease;
+  }
+
+  /* Tighter map border radius on mobile */
+  .map-container iframe {
+    border-radius: 8px;
+  }
+}
+
+/* Ensure tap targets are at least 44px (Apple HIG) */
+@media (max-width: 640px) {
+  button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  input[type="text"] {
+    min-height: 44px;
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+}
+
+/* Landscape phone adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: auto;
+  }
+}
