@@ -1,5 +1,10 @@
 # ⛅ Weather App — Real-Time Forecast
 A beautiful, feature-rich weather application built with **React 19** and **Vite**. Get real-time weather data, 5-day forecasts, air quality index, sunrise/sunset timelines, and interactive maps — all wrapped in a stunning glassmorphism UI with dynamic animated backgrounds that change based on current weather conditions.
+
+![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 ---
 ## ✨ Features
 
